@@ -19,9 +19,23 @@
   <body>
 
      <!-- navbar -->
-      
-      <nav class="navbar navbar-dark fixed-top sticky-top" style="background-color: #000; opacity: 0.6; width: 100vw;">
-        <h3 class="text-center text-light font-weight-bold text-uppercase" style="width: 100%;">Prueba Técnica</h3>
+
+      <nav class="navbar navbar-expand-lg navbar-dark sticky-top" style="background-color: #000; opacity: 0.6;">
+
+        <a href="<?php bloginfo('template_url'); ?>index.php"><p class="navbar-brand text-light font-weight-bold text-uppercase">Prueba Técnica</p></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <?php wp_nav_menu(array(
+          'theme_location' => 'superior',
+          'container' => 'div',
+          'container_class' => 'collapse navbar-collapse',
+          'container_id' => 'navbarSupportedContent',
+          'items_wrap' => '<ul class="navbar-nav ml-auto">%3$s</ul>',
+          'menu_class' => 'nav-item'
+        )); ?>
+
       </nav>
       
      <!-- navbar -->
