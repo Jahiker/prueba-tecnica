@@ -1,4 +1,4 @@
-    <?php get_header(); ?>  
+    <?php define( 'WP_USE_THEMES', true ); get_header(); ?>  
 
      <!-- fold2 -->
       <div class="container my-5">
@@ -78,47 +78,80 @@
 
           <div class="col-12 col-lg-8 col-md-12 col-sm-12">
 
-            <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-            
-              <div class="carousel-inner">
+          <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
 
-              <?php  
+            <div class="carousel-inner">
+              
+              <?php 
 
-                // Arrancando el loop
-                if ( have_posts() ) : while ( have_posts() ) : the_post();
+                // Definiendo el tipo de post
+                $loop = new WP_Query(array(
+                    'post_type' => 'post'
+                ));
+
+                $i = 0;
                 
-                // Definiendo los ACF
-                $imagen = get_field('imagen');
-                $autor = get_post_meta($post -> ID, 'autor', true);
-                ?>
 
-                <div class="carousel-item">
-                  <img class="d-block w-100" src="<?php echo esc_url($imagen['url']); ?>" alt="<?php echo esc_attr($imagen['alt']); ?>" >
-                  <div class="carousel-caption d-none d-md-block">
-                    <h5><?php the_title(); ?></h5>
-                    <p><?php echo "$autor"; ?></p>
+                if ($loop->have_posts()) { 
+                  
+                  while ($loop->have_posts() && $i < 1 ) : $loop->the_post(); 
+                  
+                  $imagen = get_field('imagen');
+                  $autor = get_post_meta($post -> ID, 'autor', true);
+                  $i++;
+                  
+                  ?>
+                  
+                    <div class="carousel-item active">
+                        <img src="<?php echo esc_url($imagen['url']); ?>" class="d-block w-100" alt="<?php echo esc_attr($imagen['alt']); ?>" style="max-height: 70vh; width: auto;">
+                        <div class="carousel-caption d-none d-md-block">
+                          <h5><?php the_title(); ?></h5>
+                          <p><?php echo"$autor"; ?></p>
+                        </div>
+                    </div>
+                    
+                    <?php 
+                    
+                  endwhile;
+
+                  while ($loop->have_posts() && $i >= 1 ) : $loop->the_post();
+                  
+                  $imagen = get_field('imagen');
+                  $autor = get_post_meta($post -> ID, 'autor', true);
+                  $i++;
+                  
+                  ?>
+                  
+                  <div class="carousel-item">
+                      <img src="<?php echo esc_url($imagen['url']); ?>" class="d-block w-100" alt="<?php echo esc_attr($imagen['alt']); ?>" style="max-height: 70vh; width: auto;">
+                      <div class="carousel-caption d-none d-md-block">
+                        <h5><?php the_title(); ?></h5>
+                        <p><?php echo"$autor"; ?></p>
+                      </div>
                   </div>
-                </div>
+                  
+                  <?php 
+                  
+                endwhile;
+                }else{ ?>
+                  <h1>No hay imagenes publicadas</h1>
+                  <?php wp_reset_postdata();
+                }
 
-              <?php endwhile; else: ?>
-                <h1>No hay imagenes para mostrar!</h1>
-              <?php endif;
-                wp_reset_postdata();   
               ?>
 
-              </div>
-
-              <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-              </a>
-
-              <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-              </a>
-
             </div>
+
+            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+
+          </div>
 
           </div>
           

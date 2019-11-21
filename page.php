@@ -20,14 +20,14 @@
                 $imagen = get_field('imagen');
                 ?>
                     
-                    <div class="card col-xl-3 col-lg-4 col-md-6 col-sm-12 my-auto mx-auto my-auto">
+                    <div class="card col-xl-3 col-lg-4 col-md-6 col-sm-12 my-auto mx-auto" style="height: 70vh;">
 
-                        <img class="card-img-top mx-auto " src="<?php echo esc_url($imagen['url']); ?>" alt="<?php echo esc_attr($imagen['alt']); ?>" style="height: 25vh; width: auto; max-width: 35vh;">
+                        <img class="card-img-top mx-auto" src="<?php echo esc_url($imagen['url']); ?>" alt="<?php echo esc_attr($imagen['alt']); ?>" style="height: 25vh; width: auto; ">
                         
                         <div class="card-body">
                             <h5 class="card-title"><?php the_title(); ?></h5>
                             <p class="card-text"><?php echo "$resumen"; ?></p>
-                            <a href="<?php the_permalink(); ?>" class="btn btn-primary">Leer mas...</a>
+                            <a href="<?php the_permalink(); ?>" class="btn btn-outline-dark btn-block">Leer mas...</a>
                         </div>
                     </div>
 
