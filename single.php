@@ -53,7 +53,7 @@
             $descripcion = get_post_meta($post -> ID, 'descripcion', true);
         ?>
 
-        <div class="container my-5 align-self-start">
+        <div class="container my-5">
 
             <h1 class="my-3 text-center"><?php the_title(); ?></h1>
             <img src="<?php echo esc_url($imagen['url']); ?>" alt="<?php echo esc_attr($imagen['alt']); ?>" class="rounded mx-auto d-block" style="max-height: 50vh; width: auto;">

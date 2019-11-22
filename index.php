@@ -103,9 +103,9 @@
                   ?>
                   
                     <div class="carousel-item active">
-                        <img src="<?php echo esc_url($imagen['url']); ?>" class="d-block w-100" alt="<?php echo esc_attr($imagen['alt']); ?>" style="max-height: 70vh; width: auto;">
+                        <a href="<?php the_permalink(); ?>"><img src="<?php echo esc_url($imagen['url']); ?>" class="d-block w-100" alt="<?php echo esc_attr($imagen['alt']); ?>" style="max-height: 70vh; width: auto;"></a>
                         <div class="carousel-caption d-none d-md-block">
-                          <h5><?php the_title(); ?></h5>
+                          <a class="text-decoration-none text-light" href="<?php the_permalink(); ?>"><h5><?php the_title(); ?></h5></a>
                           <p><?php echo"$autor"; ?></p>
                         </div>
                     </div>
@@ -123,11 +123,11 @@
                   ?>
                   
                   <div class="carousel-item">
-                      <img src="<?php echo esc_url($imagen['url']); ?>" class="d-block w-100" alt="<?php echo esc_attr($imagen['alt']); ?>" style="max-height: 70vh; width: auto;">
-                      <div class="carousel-caption d-none d-md-block">
-                        <h5><?php the_title(); ?></h5>
-                        <p><?php echo"$autor"; ?></p>
-                      </div>
+                    <a href="<?php the_permalink(); ?>"><img src="<?php echo esc_url($imagen['url']); ?>" class="d-block w-100" alt="<?php echo esc_attr($imagen['alt']); ?>" style="max-height: 70vh; width: auto;"></a>
+                    <div class="carousel-caption d-none d-md-block">
+                      <a class="text-decoration-none text-light" href="<?php the_permalink(); ?>"><h5><?php the_title(); ?></h5></a>
+                      <p><?php echo"$autor"; ?></p>
+                    </div>
                   </div>
                   
                   <?php 
